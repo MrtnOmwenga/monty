@@ -9,10 +9,9 @@
 
 int main(int argc, char *argv[])
 {
-  FILE *file;
   char *line = NULL;
   size_t len = 0;
-  int read, check_1;
+  unsigned int line_number = 0;
   stack_t *head;
 
   head = malloc(sizeof(stack_t));
@@ -39,15 +38,10 @@ int main(int argc, char *argv[])
       exit(EXIT_FAILURE);
     }
 
-  while ((read = getline(&line, &len, file)) != -1)
+  while ((getline(&line, &len, file)) != -1)
     {
-      check_1 = check_opcodes(&head, line);
-      if (check_1 = 1)
-	{
-	  fprintf(stderr, "L<line_number>: unknown instruction <opcode>");
-	  exit(EXIT_FAILURE);
-	}
-      printf("%s\n", line);
+      check_opcodes(&head, line, line_number);
+      line_number++;
     }
 
   return (0);
