@@ -6,6 +6,10 @@
 #include <stddef.h>
 #include <stdlib.h>
 
+int check_opcodes(stack_t **head, char *line);
+int push(stack_t **head, char *line);
+int pall(stack_t **head, char *line);
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
