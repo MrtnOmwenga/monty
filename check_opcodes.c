@@ -11,7 +11,7 @@
 
 int check_opcodes(stack_t **head, char *line, unsigned int line_number)
 {
-  int i = 0;
+  int i;
   char *token;
   const char s[2] = " ";
   instruction_t instructions[] = {
@@ -20,14 +20,13 @@ int check_opcodes(stack_t **head, char *line, unsigned int line_number)
   };
 
   printf("%s\n", line);
-  while (i < 2)
+  for (i = 0; i < 2; i++)
     {
-      if (strstr(line, instructions[i].opcode) != NULL)
+      if (strstr(line, instructions[i].opcode))
 	{
 	   instructions[i].f(head, line_number);
 	   return (0);
 	 }
-      i++;
     }
   token = strtok(line, s);
   fprintf(stderr, "L%d: unknown instruction %s\n", line_number, token);
