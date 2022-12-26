@@ -21,9 +21,7 @@ int main(int argc, char *argv[])
       free(head);
       exit(EXIT_FAILURE);
     }
-  head->n = 0;
-  head->prev = NULL;
-  head->next = NULL;
+  head = NULL;
   
   if (argc != 2)
     {
@@ -40,6 +38,7 @@ int main(int argc, char *argv[])
 
   while ((getline(&line, &len, file)) != -1)
     {
+      printf("%s", line);
       check_opcodes(&head, line, line_number);
       line_number++;
     }

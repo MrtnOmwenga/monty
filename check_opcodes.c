@@ -19,9 +19,10 @@ int check_opcodes(stack_t **head, char *line, unsigned int line_number)
 				  {"pall", pall}
   };
 
+  printf("%s\n", line);
   while (i < 2)
     {
-      if (strstr(line, instructions[i].opcode))
+      if (strstr(line, instructions[i].opcode) != NULL)
 	{
 	   instructions[i].f(head, line_number);
 	   return (0);

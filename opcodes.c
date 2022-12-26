@@ -35,9 +35,9 @@ void push(stack_t **head, unsigned int line_number)
   ptr = line;
   while (*ptr)
     {
-      if (isdigit(*ptr))
+      if (*ptr >= '0' && *ptr <= '9')
 	{
-	  data = (int)strtol(ptr, &ptr, 10);
+	  data = *ptr - '0';
 	}
       ptr++;
     }
