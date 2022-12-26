@@ -14,13 +14,6 @@ int main(int argc, char *argv[])
   unsigned int line_number = 1;
   stack_t *head;
 
-  head = malloc(sizeof(stack_t));
-  if (head == NULL)
-    {
-      fprintf(stderr, "Error: malloc failed\n");
-      free(head);
-      exit(EXIT_FAILURE);
-    }
   head = NULL;
   
   if (argc != 2)
