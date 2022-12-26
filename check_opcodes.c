@@ -19,8 +19,6 @@ int check_opcodes(stack_t **head, char *line, unsigned int line_number)
 				  {"pall", pall}
   };
 
-  printf("Before checking\n");
-
   while (i < 2)
     {
       if (strstr(line, instructions[i].opcode))

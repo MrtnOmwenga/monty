@@ -13,12 +13,12 @@
 void push(stack_t **head, unsigned int line_number)
 {
   stack_t *new_head;
-  int data, i = 0;
+  int data = 0;
   size_t len = 0;
-  unsigned int count = 0;
+  unsigned int count = 1;
   char *line;
+  char *ptr;
 
-  printf("Starting... \n");
   new_head = malloc(sizeof(stack_t));
   if (new_head == NULL)
     {
@@ -32,28 +32,31 @@ void push(stack_t **head, unsigned int line_number)
       count = count + 1;
     }
 
-  printf("OK so far\n");
-  while (line[i])
+  ptr = line;
+  while (*ptr)
     {
-      if (isdigit(line[i]))
+      if (isdigit(*ptr))
 	{
-	  data = atoi(&line[i]);
+	  data = (int)strtol(ptr, &ptr, 10);
 	}
-      i++;
+      ptr++;
     }
 
-  printf("Checkpoint 1\n");
+  /**if (data == )
+    {
+      fprintf(stderr, "L%d: usage: push integer\n", line_number);
+      exit(EXIT_FAILURE);
+      }**/
+  
   new_head->n = data;
   new_head->prev = NULL;
   new_head->next = *head;
 
-  printf("Checkpoint 2\n");
   if ((*head) != NULL)
     {
   (*head)->prev = new_head;
     }
   *head = new_head;
-  printf("Checkpoint 3\n");
 }
 
 /**
@@ -74,13 +77,15 @@ void pall(stack_t **head, unsigned int line_number)
     }
   
   h = *head;
-  if (line_number)
-    {
+
   while (h != NULL)
     {
       printf("%d\n", h->n);
-
       h = h->next;
     }
+
+  if (line_number)
+    {
+      return;
     }
 }

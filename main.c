@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
 {
   char *line = NULL;
   size_t len = 0;
-  unsigned int line_number = 0;
+  unsigned int line_number = 1;
   stack_t *head;
 
   head = malloc(sizeof(stack_t));
