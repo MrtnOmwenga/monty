@@ -82,11 +82,6 @@ void push(stack_t **head, unsigned int line_number)
 void pall(stack_t **head, unsigned int line_number)
 {
   stack_t *h;
-
-  if (head == NULL || *head == NULL)
-    {
-      return;
-    }
   
   h = *head;
 
