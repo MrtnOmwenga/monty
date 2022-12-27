@@ -85,7 +85,7 @@ void pall(stack_t **head, unsigned int line_number)
 
   if (head == NULL || *head == NULL)
     {
-      exit(EXIT_FAILURE);
+      return;
     }
   
   h = *head;
