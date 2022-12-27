@@ -18,6 +18,7 @@ void push(stack_t **head, unsigned int line_number)
   unsigned int count = 1;
   char *line;
   char *ptr;
+  FILE *file;
 
   new_head = malloc(sizeof(stack_t));
   if (new_head == NULL)
@@ -26,6 +27,13 @@ void push(stack_t **head, unsigned int line_number)
       exit(EXIT_FAILURE);
     }
 
+  file = fopen(filename, "r");
+  if (file == NULL)
+    {
+      fprintf(stderr, "Error: Can't open file %s\n", filename);
+      exit(EXIT_FAILURE);
+    }
+  
   while (count < line_number)
     {
       getline(&line, &len, file);

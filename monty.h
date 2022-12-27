@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-FILE *file;
+char *filename;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)

@@ -14,6 +14,7 @@ int main(int argc, char *argv[])
   unsigned int line_number = 1;
   stack_t *head;
   int i;
+  FILE *file;
   instruction_t instructions[] = {
 				  {"push", push},
 				  {"pall", pall}
@@ -27,10 +28,11 @@ int main(int argc, char *argv[])
       exit(EXIT_FAILURE);
     }
 
-  file = fopen(argv[1], "r");
+  filename = argv[1];
+  file = fopen(filename, "r");
   if (file == NULL)
     {
-      fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+      fprintf(stderr, "Error: Can't open file %s\n", filename);
       exit(EXIT_FAILURE);
     }
 
