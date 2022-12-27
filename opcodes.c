@@ -13,7 +13,7 @@
 void push(stack_t **head, unsigned int line_number)
 {
   stack_t *new_head;
-  int data;
+  int data = -1;
   size_t len = 0;
   unsigned int count = 1;
   char *line;
@@ -52,10 +52,10 @@ void push(stack_t **head, unsigned int line_number)
 	}
     }
 
-  if (isdigit(*ptr) == 0 && *ptr != '\n' && *ptr != ' ')
+  if (data == -1)
     {
       fprintf(stderr, "L%d: usage: push integer\n", line_number);
-      exit(EXIT_FAILURE);
+      return;
     }
   
   new_head->n = data;
