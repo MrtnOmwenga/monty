@@ -40,16 +40,22 @@ int main(int argc, char *argv[])
   while (getline(&line, &len, file) != -1)
     {
       token = strtok(line, " ");
-      for (i = 0; i < 2; i++)
+      if (strstr(line, "pall"))
 	{
+	  token = "pall";
+	}
+      
+      for (i = 0; i <= 2; i++)
+	{
+	  if (i == 2)
+	    {
+	      fprintf(stderr, "l%d: unknown instruction %s\n", line_number, token);
+	    }
 	  if (strcmp(token, instructions[i].opcode) == 0)
 	    {
 	      instructions[i].f(&head, line_number);
+	      break;
 	    }
-	}
-      if (strcmp(token, "push") != 0 && strcmp(token, "pall") != 0)
-	{
-	  fprintf(stderr, "L%d: unknown instruction %s\n", line_number, token);
 	}
       line_number++;
     }
