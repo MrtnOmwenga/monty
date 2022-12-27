@@ -13,7 +13,7 @@
 void push(stack_t **head, unsigned int line_number)
 {
   stack_t *new_head;
-  int data = -1;
+  int data;
   size_t len = 0;
   unsigned int count = 1;
   char *line;
@@ -31,7 +31,6 @@ void push(stack_t **head, unsigned int line_number)
   if (file == NULL)
     {
       fprintf(stderr, "Error: Can't open file %s\n", filename);
-      exit(EXIT_FAILURE);
     }
   
   while (count <= line_number)
@@ -43,14 +42,17 @@ void push(stack_t **head, unsigned int line_number)
   ptr = line;
   while (*ptr)
     {
-      if (isdigit(*ptr))
+      if (isdigit(*ptr) > 0)
 	{
 	  data = strtol(ptr, &ptr, 10);
 	}
-      ptr++;
+      else
+	{
+	  ptr++;
+	}
     }
 
-  if (data == -1)
+  if (isdigit(*ptr) == 0 && *ptr != '\n' && *ptr != ' ')
     {
       fprintf(stderr, "L%d: usage: push integer\n", line_number);
       exit(EXIT_FAILURE);
