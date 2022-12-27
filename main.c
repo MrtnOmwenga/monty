@@ -13,7 +13,12 @@ int main(int argc, char *argv[])
   size_t len = 0;
   unsigned int line_number = 1;
   stack_t *head;
-
+  int i;
+  instruction_t instructions[] = {
+				  {"push", push},
+				  {"pall", pall}
+  };
+  
   head = NULL;
   
   if (argc != 2)
@@ -29,10 +34,16 @@ int main(int argc, char *argv[])
       exit(EXIT_FAILURE);
     }
 
-  while ((getline(&line, &len, file)) != -1)
+  while (getline(&line, &len, file) != -1)
     {
       printf("%s", line);
-      check_opcodes(&head, line, line_number);
+      for (i = 0; i < 2; i++)
+	{
+	  if (strstr(line, instructions[i].opcode))
+	    {
+	      instructions[i].f(&head, line_number);
+	    }
+	}
       line_number++;
     }
 
