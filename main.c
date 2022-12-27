@@ -13,8 +13,9 @@ int main(int argc, char *argv[])
   size_t len = 0;
   unsigned int line_number = 1;
   stack_t *head;
-  int i;
+  int i, flag = 1;
   FILE *file;
+  char *token;
   instruction_t instructions[] = {
 				  {"push", push},
 				  {"pall", pall}
@@ -43,7 +44,17 @@ int main(int argc, char *argv[])
 	  if (strstr(line, instructions[i].opcode))
 	    {
 	      instructions[i].f(&head, line_number);
+	      flag = 0;
 	    }
+	}
+      if (flag = 1)
+	{
+	  token = strtok(line, " ");
+	  fprintf(stderr, "L%d: unknown instruction %s\n", line_number, token);
+	}
+      else
+	{
+	  flag = 1;
 	}
       line_number++;
     }
