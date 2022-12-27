@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
     {
       token = strtok(line, " ");
       
-      if (token != NULL)
+      if (token != strtok("     ", " ")
 	{
       for (i = 0; i <= 2; i++)
 	{
