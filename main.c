@@ -19,7 +19,8 @@ int main(int argc, char *argv[])
   char *token;
   instruction_t instructions[] = {
 				  {"push", push},
-				  {"pall\n", pall}
+				  {"pall\n", pall},
+				  {"pall", pall}
   };
   
   head = NULL;
@@ -43,9 +44,9 @@ int main(int argc, char *argv[])
       if (read > 2)
 	{
       token = strtok(line, " ");
-      for (i = 0; i <= 2; i++)
+      for (i = 0; i <= 3; i++)
 	{
-	  if (i == 2)
+	  if (i == 3)
 	    {
 	      fprintf(stderr, "l%d: unknown instruction %s\n", line_number, token);
 	      exit(EXIT_FAILURE);
