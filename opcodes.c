@@ -52,11 +52,11 @@ void push(stack_t **head, unsigned int line_number)
 	}
     }
 
-  if (data == -1)
+  /**if (data == -1)
     {
       fprintf(stderr, "L%d: usage: push integer\n", line_number);
       return;
-    }
+      }**/
   
   new_head->n = data;
   new_head->prev = NULL;
