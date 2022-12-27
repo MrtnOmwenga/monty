@@ -34,7 +34,7 @@ void push(stack_t **head, unsigned int line_number)
       exit(EXIT_FAILURE);
     }
   
-  while (count < line_number)
+  while (count <= line_number)
     {
       getline(&line, &len, file);
       count = count + 1;
@@ -43,9 +43,9 @@ void push(stack_t **head, unsigned int line_number)
   ptr = line;
   while (*ptr)
     {
-      if (*ptr >= '0' && *ptr <= '9')
+      if (isdigit(*ptr))
 	{
-	  data = *ptr - '0';
+	  data = strtol(ptr, &ptr, 10);
 	}
       ptr++;
     }
@@ -65,6 +65,8 @@ void push(stack_t **head, unsigned int line_number)
   (*head)->prev = new_head;
     }
   *head = new_head;
+
+  fclose(file);
 }
 
 /**

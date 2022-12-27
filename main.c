@@ -38,7 +38,6 @@ int main(int argc, char *argv[])
 
   while (getline(&line, &len, file) != -1)
     {
-      printf("%s", line);
       for (i = 0; i < 2; i++)
 	{
 	  if (strstr(line, instructions[i].opcode))
