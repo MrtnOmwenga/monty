@@ -39,17 +39,17 @@ int main(int argc, char *argv[])
 
   while (getline(&line, &len, file) != -1)
     {
+      token = strtok(line, " ");
       for (i = 0; i < 2; i++)
 	{
-	  if (strstr(line, instructions[i].opcode))
+	  if (strcmp(token, instructions[i].opcode) == 0)
 	    {
 	      instructions[i].f(&head, line_number);
 	      flag = 0;
 	    }
 	}
-      if (flag = 1)
+      if (flag)
 	{
-	  token = strtok(line, " ");
 	  fprintf(stderr, "L%d: unknown instruction %s\n", line_number, token);
 	}
       else
