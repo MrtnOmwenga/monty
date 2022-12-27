@@ -55,7 +55,7 @@ void push(stack_t **head, unsigned int line_number)
   if (data == -1)
     {
       fprintf(stderr, "L%d: usage: push integer\n", line_number);
-      return;
+      exit(EXIT_FAILURE);
     }
   
   new_head->n = data;
