@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
   char *token;
   instruction_t instructions[] = {
 				  {"push", push},
-				  {"pall", pall}
+				  {"pall\n", pall}
   };
   
   head = NULL;
@@ -40,11 +40,9 @@ int main(int argc, char *argv[])
   while (getline(&line, &len, file) != -1)
     {
       token = strtok(line, " ");
-      if (strstr(line, "pall"))
-	{
-	  token = "pall";
-	}
       
+      if (token != NULL)
+	{
       for (i = 0; i <= 2; i++)
 	{
 	  if (i == 2)
@@ -58,6 +56,7 @@ int main(int argc, char *argv[])
 	    }
 	}
       line_number++;
+	}
     }
 
   return (0);
