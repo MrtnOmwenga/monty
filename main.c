@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
   size_t len = 0;
   unsigned int line_number = 1;
   stack_t *head;
-  int i, flag = 1;
+  int i;
   FILE *file;
   char *token;
   instruction_t instructions[] = {
@@ -45,16 +45,11 @@ int main(int argc, char *argv[])
 	  if (strcmp(token, instructions[i].opcode) == 0)
 	    {
 	      instructions[i].f(&head, line_number);
-	      flag = 0;
 	    }
 	}
-      if (flag)
+      if (strcmp(token, "push") != 0 && strcmp(token, "pall") != 0)
 	{
 	  fprintf(stderr, "L%d: unknown instruction %s\n", line_number, token);
-	}
-      else
-	{
-	  flag = 1;
 	}
       line_number++;
     }
