@@ -15,6 +15,7 @@ int main(int argc, char *argv[])
   stack_t *head;
   int i;
   FILE *file;
+  __ssize_t read;
   char *token;
   instruction_t instructions[] = {
 				  {"push", push},
@@ -37,12 +38,11 @@ int main(int argc, char *argv[])
       exit(EXIT_FAILURE);
     }
 
-  while (getline(&line, &len, file) != -1)
+  while ((read = getline(&line, &len, file)) != -1)
     {
-      token = strtok(line, " ");
-      
-      if (token != strtok("     ", " "))
+      if (read > 2)
 	{
+      token = strtok(line, " ");
       for (i = 0; i <= 2; i++)
 	{
 	  if (i == 2)
@@ -55,8 +55,8 @@ int main(int argc, char *argv[])
 	      break;
 	    }
 	}
-      line_number++;
 	}
+      line_number++;
     }
 
   return (0);
