@@ -48,6 +48,7 @@ int main(int argc, char *argv[])
 	  if (i == 2)
 	    {
 	      fprintf(stderr, "l%d: unknown instruction %s\n", line_number, token);
+	      exit(EXIT_FAILURE);
 	    }
 	  if (strcmp(token, instructions[i].opcode) == 0)
 	    {
