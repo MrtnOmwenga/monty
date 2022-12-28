@@ -46,10 +46,12 @@ char *read_line(unsigned int line_number);
 int get_data(char *line, unsigned int line_number);
 void check_opcodes(stack_t **head, FILE *file);
 void destroy(stack_t **head);
+void remove_newline(char *token);
 
 /**opcodes:**/
 void push(stack_t **head, unsigned int line_number);
 void pall(stack_t **head, unsigned int line_number);
 void pint(stack_t **head, unsigned int line_number);
+void pop(stack_t **head, unsigned int line_number);
 
 #endif

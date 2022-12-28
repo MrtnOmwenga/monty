@@ -21,21 +21,19 @@ void check_opcodes(stack_t **head, FILE *file)
 
   instruction_t instructions[] = {
 				  {"push", push},
-				  {"push\n", push},
 				  {"pall", pall},
-				  {"pall\n", pall},
 				  {"pint", pint},
-				  {"pint\n", pint}
   };
   
   while ((read = getline(&line, &len, file)) != -1)
     {
       token = strtok(line, " ");
+      remove_newline(token);
       if (read > 2 && strcmp(token, "\n") != 0)
 	{
-	  for (i = 0; i <= 6; i++)
+	  for (i = 0; i <= 3; i++)
 	    {
-	      if (i == 6)
+	      if (i == 3)
 		{
 		  fprintf(stderr, "L%d: unknown instruction %s\n", line_number, token);
 		  free(*head);

@@ -2,6 +2,33 @@
 #include "monty.h"
 
 /**
+ *remove_newline- Removes newline character
+ *
+ *@token: Token
+ *
+ *@return: void
+ */
+
+void remove_newline(char *token)
+{
+  int i, j;
+
+  int len = strlen(token);
+  for (i = 0; i < len; i++)
+    {
+      if (token[i] == '\n')
+	{
+	for (j = i; j < len; j++)
+	   {
+	     token[j] = token[j + 1];
+	   }
+	len--;
+	i--;
+	}
+    }
+}
+
+/**
  *destroy- Deletes the stack
  *
  *@head: Head of stack
