@@ -13,10 +13,7 @@
 void push(stack_t **head, unsigned int line_number)
 {
   stack_t *new_head;
-  size_t len = 0;
-  unsigned int count = 1;
   char *line = NULL;
-  FILE *file;
   int data;
 
   new_head = malloc(sizeof(stack_t));
@@ -28,20 +25,7 @@ void push(stack_t **head, unsigned int line_number)
       exit(EXIT_FAILURE);
     }
 
-  file = fopen(filename, "r");
-  if (file == NULL)
-    {
-      fprintf(stderr, "Error: Can't open file %s\n", filename);
-      free(new_head);
-      free(*head);
-      fclose(file);
-    }
-  
-  while (count <= line_number)
-    {
-      getline(&line, &len, file);
-      count = count + 1;
-    }
+  line = read_line(line_number);
 
   data = get_data(line, line_number);
   
@@ -55,7 +39,6 @@ void push(stack_t **head, unsigned int line_number)
     }
   *head = new_head;
 
-  fclose(file);
   free(line);
   line = NULL;
 }

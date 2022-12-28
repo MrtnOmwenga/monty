@@ -1,3 +1,4 @@
+#define _GNU_SOURCE
 #include "monty.h"
 
 /**
@@ -58,4 +59,37 @@ int get_data(char *line, unsigned int line_number)
     }
 
   return (data);
+}
+
+/**
+ *read_line- reads specific line
+ *
+ *@line_number: line number
+ *
+ *Return: Line
+ */
+
+char *read_line(unsigned int line_number)
+{
+  unsigned int count = 1;
+  FILE *file;
+  size_t len = 0;
+  char *line = NULL;
+
+  file = fopen(filename, "r");
+  if (file == NULL)
+    {
+      fprintf(stderr, "Error: Can't open file %s\n", filename);
+      fclose(file);
+      exit(EXIT_FAILURE);
+    }
+
+  while (count <= line_number)
+    {
+      getline(&line, &len, file);
+      count = count + 1;
+    }
+
+  fclose(file);
+  return (line);
 }
