@@ -1,7 +1,6 @@
 push 1
-pint
-push 2
-pint
-push
-pint
-pushe
+push     2
+
+              
+    push       1024
+push  

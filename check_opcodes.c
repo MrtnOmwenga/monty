@@ -28,9 +28,9 @@ void check_opcodes(stack_t **head, FILE *file)
   while ((read = getline(&line, &len, file)) != -1)
     {
       token = strtok(line, " ");
-      remove_newline(token);
       if (read > 2 && strcmp(token, "\n") != 0)
 	{
+	  remove_newline(token);
 	  for (i = 0; i <= 3; i++)
 	    {
 	      if (i == 3)

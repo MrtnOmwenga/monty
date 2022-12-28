@@ -19,3 +19,20 @@ void pint(stack_t **head, unsigned int line_number)
 
   printf("%d\n", (*head)->n);
 }
+
+/**
+ *pop- Removes forst element from stack
+ *
+ *@head: Head of stack
+ *@line_number: Line number
+ *
+ *Return: void
+ */
+
+void pop(stack_t **head, unsigned int line_number)
+{
+  if (line_number)
+    {
+      printf("%d\n", (*head)->n);
+    }
+}
