@@ -3,6 +3,9 @@
 
 /**
  *main- Reads input file
+ * 
+ *@argc: Argument count
+ *@argv: Argument vector
  *
  *Return: Always 0 success
  */

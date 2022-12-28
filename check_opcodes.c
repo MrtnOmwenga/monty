@@ -4,6 +4,7 @@
 /**
  *check_opcodes- Check opcodes
  *
+ *@head: Head of stack
  *@file: File being checked
  *
  *Return: void

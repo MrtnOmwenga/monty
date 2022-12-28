@@ -5,7 +5,7 @@
  *push- Pushes data onto a stack
  *
  *@head: Head of stack
- *@line: Line containing data
+ *@line_number: Line number
  *
  *Return: void
  */
@@ -84,6 +84,7 @@ void push(stack_t **head, unsigned int line_number)
  *pall- Displays all elements in stack
  *
  *@head: Head of stack
+ *@line_number: Line number
  *
  *Return: void
  */
