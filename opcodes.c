@@ -77,6 +77,7 @@ void push(stack_t **head, unsigned int line_number)
 
   fclose(file);
   free(line);
+  line = NULL;
 }
 
 /**
