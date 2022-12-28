@@ -9,20 +9,8 @@
 
 int main(int argc, char *argv[])
 {
-  char *line = NULL;
-  size_t len = 0;
-  unsigned int line_number = 1;
   stack_t *head;
-  int i;
   FILE *file;
-  __ssize_t read;
-  char *token;
-  instruction_t instructions[] = {
-				  {"push", push},
-				  {"push\n", push},
-				  {"pall\n", pall},
-				  {"pall", pall}
-  };
   
   head = NULL;
   
@@ -42,31 +30,9 @@ int main(int argc, char *argv[])
       exit(EXIT_FAILURE);
     }
 
-  while ((read = getline(&line, &len, file)) != -1)
-    {
-      token = strtok(line, " ");
-      if (read > 2 && strcmp(token, "\n") != 0)
-	{
-      for (i = 0; i <= 4; i++)
-	{
-	  if (i == 4)
-	    {
-	      fprintf(stderr, "L%d: unknown instruction %s\n", line_number, token);
-	      free(head);
-	      exit(EXIT_FAILURE);
-	    }
-	  if (strcmp(token, instructions[i].opcode) == 0)
-	    {
-	      instructions[i].f(&head, line_number);
-	      break;
-	    }
-	}
-	}
-      line_number++;
-    }
+  check_opcodes(&head, file);
 
   fclose(file);
   destroy(&head);
-  free(line);
   return (0);
 }
