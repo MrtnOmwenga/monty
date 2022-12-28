@@ -44,9 +44,9 @@ int main(int argc, char *argv[])
 
   while ((read = getline(&line, &len, file)) != -1)
     {
-      if (read > 2)
-	{
       token = strtok(line, " ");
+      if (read > 2 && strcmp(token, "\n") != 0)
+	{
       for (i = 0; i <= 4; i++)
 	{
 	  if (i == 4)
