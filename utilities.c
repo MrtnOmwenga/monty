@@ -5,8 +5,6 @@
  *remove_newline- Removes newline character
  *
  *@token: Token
- *
- *@return: void
  */
 
 void remove_newline(char *token)
