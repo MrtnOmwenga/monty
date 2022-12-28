@@ -44,5 +44,6 @@ void (*f)(stack_t **stack, unsigned int line_number);
 int check_opcodes(stack_t **head, char *line, unsigned int line_number);
 void push(stack_t **head, unsigned int line_number);
 void pall(stack_t **head, unsigned int line_number);
+void destroy(stack_t **head);
 
 #endif

@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
   char *line = NULL;
   size_t len = 0;
   unsigned int line_number = 1;
-  stack_t *head, *h, *curr;
+  stack_t *head;
   int i;
   FILE *file;
   __ssize_t read;
@@ -66,16 +66,7 @@ int main(int argc, char *argv[])
     }
 
   fclose(file);
-  
-  curr = head;
-  while (curr != NULL)
-    {
-      h = curr->next;
-      free(curr);
-      curr = h;
-      }
-
-  head = NULL;
+  destroy(&head);
   free(line);
   return (0);
 }
