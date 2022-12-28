@@ -1,6 +1,26 @@
 #include "monty.h"
 
 /**
+ *add- Adds first 2 elements of stack
+ *
+ *@head: head of stack
+ *@line_number: Line number
+ *
+ */
+
+void add(stack_t **head, unsigned int line_number)
+{
+  if (head == NULL || *head == NULL || (*head)->next == NULL)
+    {
+      fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
+      exit(EXIT_FAILURE);
+    }
+
+  (*head)->next->n =  (*head)->n + (*head)->next->n;
+  pop(head, line_number);
+}
+
+/**
  *swap- Swaps first 2 elements of stack
  *
  *@head: Head of stck
