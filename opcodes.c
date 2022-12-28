@@ -16,7 +16,7 @@ void push(stack_t **head, unsigned int line_number)
   int data = -1;
   size_t len = 0;
   unsigned int count = 1;
-  char *line;
+  char *line = NULL;
   char *ptr;
   FILE *file;
 
@@ -103,4 +103,6 @@ void pall(stack_t **head, unsigned int line_number)
     {
       return;
     }
+
+  free(h);
 }
