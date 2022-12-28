@@ -19,6 +19,7 @@ int main(int argc, char *argv[])
   char *token;
   instruction_t instructions[] = {
 				  {"push", push},
+				  {"push\n", push},
 				  {"pall\n", pall},
 				  {"pall", pall}
   };
@@ -28,6 +29,7 @@ int main(int argc, char *argv[])
   if (argc != 2)
     {
       fprintf(stderr, "USAGE: monty file\n");
+      free(head);
       exit(EXIT_FAILURE);
     }
 
@@ -36,6 +38,7 @@ int main(int argc, char *argv[])
   if (file == NULL)
     {
       fprintf(stderr, "Error: Can't open file %s\n", filename);
+      free(head);
       exit(EXIT_FAILURE);
     }
 
@@ -44,11 +47,12 @@ int main(int argc, char *argv[])
       if (read > 2)
 	{
       token = strtok(line, " ");
-      for (i = 0; i <= 3; i++)
+      for (i = 0; i <= 4; i++)
 	{
-	  if (i == 3)
+	  if (i == 4)
 	    {
 	      fprintf(stderr, "L%d: unknown instruction %s\n", line_number, token);
+	      free(head);
 	      exit(EXIT_FAILURE);
 	    }
 	  if (strcmp(token, instructions[i].opcode) == 0)
