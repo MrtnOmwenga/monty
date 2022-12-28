@@ -41,6 +41,7 @@ char *opcode;
 void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+int get_data(char *line, unsigned int line_number);
 void check_opcodes(stack_t **head, FILE *file);
 void push(stack_t **head, unsigned int line_number);
 void pall(stack_t **head, unsigned int line_number);

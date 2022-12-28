@@ -13,12 +13,11 @@
 void push(stack_t **head, unsigned int line_number)
 {
   stack_t *new_head;
-  int data = -1;
   size_t len = 0;
   unsigned int count = 1;
   char *line = NULL;
-  char *ptr;
   FILE *file;
+  int data;
 
   new_head = malloc(sizeof(stack_t));
   if (new_head == NULL)
@@ -44,27 +43,7 @@ void push(stack_t **head, unsigned int line_number)
       count = count + 1;
     }
 
-  ptr = line;
-  while (*ptr)
-    {
-      if (isdigit(*ptr) > 0)
-	{
-	  data = strtol(ptr, &ptr, 10);
-	  break;
-	}
-      else
-	{
-	  ptr++;
-	}
-    }
-
-  if (data == -1 || (*ptr != ' ' && *ptr != '\n'))
-    {
-      fprintf(stderr, "L%d: usage: push integer\n", line_number);
-      free(new_head);
-      free(*head);
-      exit(EXIT_FAILURE);
-    }
+  data = get_data(line, line_number);
   
   new_head->n = data;
   new_head->prev = NULL;
