@@ -27,6 +27,7 @@ void destroy(stack_t **head)
  *get_data- Gets data from line
  *
  *@line: Line with data
+ *@line_number: Line number
  *
  *Return: data
  */
@@ -53,8 +54,6 @@ int get_data(char *line, unsigned int line_number)
   if (data == -1 || (*ptr != ' ' && *ptr != '\n'))
     {
       fprintf(stderr, "L%d: usage: push integer\n", line_number);
-      /**free(*new_head);
-	 free(*head);**/
       exit(EXIT_FAILURE);
     }
 
