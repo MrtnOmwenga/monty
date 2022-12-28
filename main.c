@@ -65,5 +65,8 @@ int main(int argc, char *argv[])
       line_number++;
     }
 
+  fclose(file);
+  free(head);
+  free(line);
   return (0);
 }

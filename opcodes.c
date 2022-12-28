@@ -33,6 +33,9 @@ void push(stack_t **head, unsigned int line_number)
   if (file == NULL)
     {
       fprintf(stderr, "Error: Can't open file %s\n", filename);
+      free(new_head);
+      free(*head);
+      fclose(file);
     }
   
   while (count <= line_number)
@@ -73,6 +76,7 @@ void push(stack_t **head, unsigned int line_number)
   *head = new_head;
 
   fclose(file);
+  free(line);
 }
 
 /**
