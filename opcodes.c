@@ -24,6 +24,8 @@ void push(stack_t **head, unsigned int line_number)
   if (new_head == NULL)
     {
       fprintf(stderr, "Error: malloc failed\n");
+      free(new_head);
+      free(*head);
       exit(EXIT_FAILURE);
     }
 
@@ -42,6 +44,7 @@ void push(stack_t **head, unsigned int line_number)
   ptr = line;
   while (*ptr)
     {
+      printf("%c\n", *ptr);
       if (isdigit(*ptr) > 0)
 	{
 	  data = strtol(ptr, &ptr, 10);
@@ -55,6 +58,8 @@ void push(stack_t **head, unsigned int line_number)
   if (data == -1)
     {
       fprintf(stderr, "L%d: usage: push integer\n", line_number);
+      free(new_head);
+      free(*head);
       exit(EXIT_FAILURE);
     }
   
