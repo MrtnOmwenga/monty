@@ -50,6 +50,7 @@ void push(stack_t **head, unsigned int line_number)
       if (isdigit(*ptr) > 0)
 	{
 	  data = strtol(ptr, &ptr, 10);
+	  break;
 	}
       else
 	{
@@ -57,7 +58,7 @@ void push(stack_t **head, unsigned int line_number)
 	}
     }
 
-  if (data == -1)
+  if (data == -1 || (*ptr != ' ' && *ptr != '\n'))
     {
       fprintf(stderr, "L%d: usage: push integer\n", line_number);
       free(new_head);
