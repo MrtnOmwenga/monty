@@ -1,12 +1,37 @@
 #include "monty.h"
 
 /**
+ *swap- Swaps first 2 elements of stack
+ *
+ *@head: Head of stck
+ *@line_number: Line number
+ *
+ */
+
+void swap(stack_t **head, unsigned int line_number)
+{
+  int first;
+  int second;
+  
+  if (head == NULL || *head == NULL || (*head)->next == NULL)
+    {
+      fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
+      exit(EXIT_FAILURE);
+    }
+
+  first = (*head)->n;
+  second = (*head)->next->n;
+
+  (*head)->n = second;
+  (*head)->next->n = first;
+}
+
+/**
  *pint- Prints first integer in stack
  *
  *@head: head of stack
  *@line_number: Line number
  *
- *Return: void
  */
 
 void pint(stack_t **head, unsigned int line_number)
@@ -26,7 +51,6 @@ void pint(stack_t **head, unsigned int line_number)
  *@head: Head of stack
  *@line_number: Line number
  *
- *Return: void
  */
 
 void pop(stack_t **head, unsigned int line_number)
