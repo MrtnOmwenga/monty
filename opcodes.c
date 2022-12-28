@@ -44,7 +44,6 @@ void push(stack_t **head, unsigned int line_number)
   ptr = line;
   while (*ptr)
     {
-      printf("%c\n", *ptr);
       if (isdigit(*ptr) > 0)
 	{
 	  data = strtol(ptr, &ptr, 10);
