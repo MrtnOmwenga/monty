@@ -61,6 +61,7 @@ void destroy(stack_t **head)
 int get_data(char *line, unsigned int line_number)
 {
   char *ptr;
+  char *temp;
   int data = INT_MIN;
 
   ptr = line;
@@ -68,7 +69,13 @@ int get_data(char *line, unsigned int line_number)
     {
       if (isdigit(*ptr) > 0)
 	{
+	  temp = ptr - 1;
 	  data = strtol(ptr, &ptr, 10);
+
+	  if (*temp == '-')
+	    {
+	      data = data * - 1;
+	    }
 	  break; 
 	}
       else
