@@ -61,7 +61,7 @@ void destroy(stack_t **head)
 int get_data(char *line, unsigned int line_number)
 {
   char *ptr;
-  int data = -1;
+  int data = INT_MIN;
 
   ptr = line;
   while (*ptr)
@@ -73,11 +73,11 @@ int get_data(char *line, unsigned int line_number)
 	}
       else
 	{
-	  ptr++; 
-	} 
-    }  
+	  ptr++;
+	}
+    }
 
-  if (data == -1 || (*ptr != ' ' && *ptr != '\n'))
+  if (data == INT_MIN || (*ptr != ' ' && *ptr != '\n'))
     {
       fprintf(stderr, "L%d: usage: push integer\n", line_number);
       exit(EXIT_FAILURE);
