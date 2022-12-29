@@ -36,7 +36,7 @@ void check_opcodes(stack_t **head, FILE *file)
   while ((read = getline(&line, &len, file)) != -1)
     {
       token = strtok(line, " ");
-      if (read > 2 && strcmp(token, "\n") != 0)
+      if (read > 2 && strcmp(token, "\n") != 0 && *token != '#')
 	{
 	  remove_newline(token);
 	  for (i = 0; i <= 11; i++)
