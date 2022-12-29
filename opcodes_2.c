@@ -46,3 +46,23 @@ void _div(stack_t **head, unsigned int line_number)
   (*head)->next->n = (*head)->next->n / (*head)->n;
   pop(head, line_number);
 }
+
+/**
+ *_mul- Multiplies first 2 elements
+ *
+ *@head: Head of stack
+ *@line_number: Line number
+ *
+ */
+
+void _mul(stack_t **head, unsigned int line_number)
+{
+  if (head == NULL || *head == NULL || (*head)->next == NULL)
+    {
+      fprintf(stderr, "L%d: can't mul, stack too short\n", line_number);
+      exit(EXIT_FAILURE);
+    }
+
+  (*head)->next->n = (*head)->next->n * (*head)->n;
+  pop(head, line_number);
+}
