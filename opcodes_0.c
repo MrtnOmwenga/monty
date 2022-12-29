@@ -2,6 +2,16 @@
 #include "monty.h"
 
 /**
+ *nop- Does nothing
+ *
+ */
+
+void nop()
+{
+  return;
+}
+
+/**
  *push- Pushes data onto a stack
  *
  *@head: Head of stack

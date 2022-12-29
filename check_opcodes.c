@@ -25,7 +25,8 @@ void check_opcodes(stack_t **head, FILE *file)
 				  {"pint", pint},
 				  {"pop", pop},
 				  {"swap", swap},
-				  {"add", add}
+				  {"add", add},
+				  {"nop", nop}
   };
   
   while ((read = getline(&line, &len, file)) != -1)
@@ -34,9 +35,9 @@ void check_opcodes(stack_t **head, FILE *file)
       if (read > 2 && strcmp(token, "\n") != 0)
 	{
 	  remove_newline(token);
-	  for (i = 0; i <= 6; i++)
+	  for (i = 0; i <= 7; i++)
 	    {
-	      if (i == 6)
+	      if (i == 7)
 		{
 		  fprintf(stderr, "L%d: unknown instruction %s\n", line_number, token);
 		  free(*head);
