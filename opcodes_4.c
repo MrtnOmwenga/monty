@@ -10,23 +10,31 @@
 
 void rotl(stack_t **head, unsigned int line_number)
 {
-  stack_t *h;
+  stack_t *first;
+  stack_t *last;
   
   if (head == NULL || *head == NULL || (*head)->next == NULL)
     {
       return;
     }
 
-  h = *head;
-  while (h->next != NULL)
+  first = *head;
+  last = *head;
+  while (last->next != NULL)
     {
-      h = h->next;
+      last = last->next;
     }
 
-  (*head)->prev = h;
-  (*head)->next = NULL;
-  h->next = *head;
-  pop(head, line_number);
+  *head = first->next;
+
+  first->next = NULL;
+  first->prev = last;
+  last->next = first;
+
+  if (line_number)
+    {
+      return;
+    }
 }
 
 /**
